@@ -3,7 +3,6 @@ package com.lipesc.apitmdb.service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import com.lipesc.apitmdb.model.Movie;
 import com.lipesc.apitmdb.model.MovieResponse;
 
 import reactor.core.publisher.Mono;
@@ -35,12 +34,12 @@ public class MovieService {
     }
 
 
-     public Mono<MovieResponse> getTop10Movies() {
+     public Mono<MovieResponse> getTop10Movies(int page) {
         return webClient.get()
             .uri(uriBuilder -> uriBuilder
                 .path("/movie/popular")
                 .queryParam("language", "pt-BR")
-                .queryParam("page", 1)
+                .queryParam("page", page)
                 .build())
             .headers(headers -> headers.setBearerAuth(apiToken))
             .retrieve()

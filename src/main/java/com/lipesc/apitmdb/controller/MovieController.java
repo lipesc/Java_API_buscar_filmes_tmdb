@@ -4,10 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lipesc.apitmdb.model.Movie;
 import com.lipesc.apitmdb.model.MovieResponse;
 import com.lipesc.apitmdb.service.MovieService;
 
@@ -24,9 +22,9 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-   @GetMapping("/top")
-    public Mono<MovieResponse> getTop10Movies() {
-        return movieService.getTop10Movies();
+   @GetMapping("/top{page}")
+    public Mono<MovieResponse> getTop10Movies(@PathVariable int page) {
+        return movieService.getTop10Movies(page);
     }
 
    @GetMapping("/search/{name}")
