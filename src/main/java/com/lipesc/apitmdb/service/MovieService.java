@@ -24,7 +24,7 @@ public class MovieService {
             .uri(uriBuilder -> uriBuilder
                 .path("/search/movie")
                 .queryParam("query", name)
-                .queryParam("include_adult", false)
+                .queryParam("include_adult", true)
                 .queryParam("language", "pt-BR")
                 .queryParam("page", 1)
                 .build())
