@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loadTopMovies(curretPage);
   })
 })
-document.getElementById('search-button').addEventListener('click', function () {
+document.getElementById('search-input').addEventListener('keypress', function () {
   const query = document.getElementById('search-input').value;
   if (query) {
     searchMovies(query);
@@ -27,10 +27,11 @@ function loadTopMovies(page) {
         const movieElement = document.createElement('div');
         movieElement.className = 'movie';
         movieElement.innerHTML = `
-                    <h2>${movie.title}</h2>
-                    <p><strong>Título Original:</strong> ${movie.original_title}</p>
-                    <p>${movie.overview}</p>
-                    <p><strong>Data de Lançamento:</strong> ${movie.release_date}</p>
+        <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" alt="poster movie"/>
+        <h3>${movie.title}</h3>
+        <p><strong>Título Original:</strong> ${movie.original_title}</p>
+        <p>${movie.overview}</p>
+        <p><strong>Data de Lançamento:</strong> ${movie.release_date}</p>
                     <p><strong>Média de Votos:</strong> ${movie.vote_average}</p>
                 `;
         moviesContainer.appendChild(movieElement);
@@ -50,10 +51,11 @@ function searchMovies(query) {
         const movieElement = document.createElement('div');
         movieElement.className = 'movie';
         movieElement.innerHTML = `
-          <h2>${movie.title}</h2>
-           <p><strong>Título Original:</strong> ${movie.original_title}</p>
-                    <p>${movie.overview}</p>
-                    <p><strong>Data de Lançamento:</strong> ${movie.release_date}</p>
+        <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" alt="poster movie"/>
+        <h2>${movie.title}</h2>
+        <p><strong>Título Original:</strong> ${movie.original_title}</p>
+        <p>${movie.overview}</p>
+        <p><strong>Data de Lançamento:</strong> ${movie.release_date}</p>
                     <p><strong>Média de Votos:</strong> ${movie.vote_average}</p>
                 `;
         search_movies_Container.appendChild(movieElement);

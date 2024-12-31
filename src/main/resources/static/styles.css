@@ -4,24 +4,90 @@ body {
     padding: 20px;
     background-color: #f0f0f0;
 }
+/* unvisited link */
+a:link, a:visited {
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-h1, h2 {
+a:hover, a:active {
+  background-color: rgb(146, 146, 146);
+}
+.header {
+            display: flex;
+            align-items: center;
+            background-color: #0d1117;
+            padding: 10px 20px;
+            color: white;
+              list-style-type: none;
+              top: 0;
+              position: sticky;
+        }
+        .header .menu-icon {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+            margin-right: auto;
+        }
+        .header .logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .header .logo span {
+            font-size: 18px;
+        }
+        .header .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+        .header .search-container input {
+            background-color: #0d1117;
+            border: none;
+            color: white;
+            outline: none;
+            padding: 5px;
+            width: 200px;
+        }
+        .header .ssearch-container input::placeholder {
+            color: #8b949e;
+        }
+        .header .search-container .search-icon {
+            color: #8b949e;
+            margin-right: 5px;
+        }
+h1 {
+   position: top;
     text-align: center;
+
+    align-self: auto;
+    margin: 0;
+    padding: 20px;
+
+}
+
+h2 {
+    align-self: auto; 
+
+    text-align: right;
     color: #333;
 }
 
-.search-container {
-    text-align: center;
-    margin-bottom: 20px;
-}
 
-#search-input {
-    padding: 10px;
-    width: 300px;
-    margin-right: 10px;
-}
 
-#search-button, #next-page-button {
+
+#next-page-button {
     background-color: #333;
     color: #fff;
     border: none;
@@ -29,7 +95,7 @@ h1, h2 {
     cursor: pointer;
 }
 
-#search-button:hover, #next-page-button:hover {
+#next-page-button:hover {
     background-color: #555;
 }
 
@@ -40,21 +106,32 @@ h1, h2 {
 }
 
 .movie {
+   
+
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin: 10px;
     padding: 20px;
-    width: 300px;
+    width: 350px;
+    height: 100;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.movie h2 {
-    font-size: 18px;
+.movie h3 {
+    font-size: 14px;
     margin: 0 0 10px;
     color: #333;
 }
-
+.movie img { 
+  align-self: auto; 
+  width: 200px; 
+  height: 250px; 
+  object-fit: contain;
+ }
+#movies-container, div.movie strong {
+  color: red;
+}
 .movie p {
     font-size: 14px;
     color: #666;
