@@ -17,12 +17,11 @@ public class MovieController {
 
     private final MovieService movieService;
 
-    @Autowired
     public MovieController(MovieService movieService) {
         this.movieService = movieService;
     }
 
-   @GetMapping("/top{page}")
+   @GetMapping("/top/{page}")
     public Mono<MovieResponse> getTop10Movies(@PathVariable int page) {
         return movieService.getTop10Movies(page);
     }
