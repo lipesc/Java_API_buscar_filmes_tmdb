@@ -1,6 +1,6 @@
 package com.lipesc.apitmdb.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +21,12 @@ public class MovieController {
         this.movieService = movieService;
     }
 
-   @GetMapping("/top/{page}")
+    @GetMapping("/top/{page}")
     public Mono<MovieResponse> getTop10Movies(@PathVariable int page) {
         return movieService.getTop10Movies(page);
     }
 
-   @GetMapping("/search/{name}")
+    @GetMapping("/search/{name}")
     public Mono<MovieResponse> searchMoviesByName(@PathVariable String name) {
         return movieService.searchMoviesByName(name);
     }
