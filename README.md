@@ -1,5 +1,8 @@
 Estudos backend API usando Spring webflux, openapi, esse projeto é para consumir a API tmdb para procurar por filmes e listar o top 10 filmes do dia.
 
+deploy heroku:
+https://shielded-caverns-02756-2f19742a8e28.herokuapp.com/
+
 ## Como Executar
 criar uma conta e gerar uma key no tmdb\
 criar um arquivo e inserir sua key:\
