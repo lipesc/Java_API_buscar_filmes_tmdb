@@ -4,7 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar filmes - tmdb api</title>
-    <link rel="stylesheet" href="styles.css">
+     body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f0f0f0;
+      }
+     
+    </style>
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
   </head>
   <body>
 <div class="header">
@@ -35,6 +44,6 @@
     <h3>Top filmes de Hoje</h3>
     <div id="movies-container"></div>
     <button id="next-page-button">Próxima página</button>
-    <script src="script.js"></script>
+     <script src="script.js" defer></script>
   </body>
 </html>
