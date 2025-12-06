@@ -1,5 +1,7 @@
 package com.lipesc.apitmdb.service;
 
+import jakarta.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,14 +11,25 @@ import reactor.core.publisher.Mono;
 
 @Service
 public class MovieService {
-  private WebClient webClient;
-  private String apiToken;
+
+    @Value("${tmdb.api.token:}")
+    private String apiToken;
+
+    private final WebClient webClient;
 
 
-  public MovieService(WebClient.Builder webClientBuilder,@Value("${tmdb.api.token}") String apiToken) {
+
+  public MovieService(WebClient.Builder webClientBuilder) {
     this.webClient = webClientBuilder.baseUrl("https://api.themoviedb.org/3").build();
-    this.apiToken = apiToken;
-  }
+ 
+    }
+
+        @PostConstruct
+        public void validateToken() {
+                if (apiToken == null || apiToken.isBlank()) {
+                        throw new IllegalStateException("TMDB token not configured. Set env var TOKENTM or property tmdb.api.token.");
+                }
+        }
 
 
  public Mono<MovieResponse> searchMoviesByName(String name) {
@@ -28,7 +41,7 @@ public class MovieService {
                 .queryParam("language", "pt-BR")
                 .queryParam("page", 1)
                 .build())
-            .headers(headers -> headers.setBearerAuth(apiToken))
+            .header("Authorization", "Bearer " + apiToken)
             .retrieve()
             .bodyToMono(MovieResponse.class);
     }
@@ -37,11 +50,11 @@ public class MovieService {
      public Mono<MovieResponse> getTop10Movies(int page) {
         return webClient.get()
             .uri(uriBuilder -> uriBuilder
-                .path("/movie/popular")
+                .path("/discover/movie")
                 .queryParam("language", "pt-BR")
                 .queryParam("page", page)
                 .build())
-            .headers(headers -> headers.setBearerAuth(apiToken))
+            .header("Authorization", "Bearer " + apiToken)
             .retrieve()
             .bodyToMono(MovieResponse.class);
     }
