@@ -1,5 +1,9 @@
 Estudos backend API usando Spring webflux, swagger, esse projeto é para consumir a API tmdb para procurar por filmes e listar o top 10 filmes do dia.
 
+deploy no gcp cloud Run:
+https://javaapibuscarfilmestmdb-602934601850.us-central1.run.app
+
+
 deploy heroku: *desativado devido ao preço
 https://shielded-caverns-02756-2f19742a8e28.herokuapp.com/
 
